@@ -1,0 +1,187 @@
+/* ==========================================================================
+   وِنس (Wens) — Animations & Motion
+   Keyframes and transition-driven effects. Kept separate from layout so
+   motion can be tuned (or disabled via prefers-reduced-motion) independently.
+   ========================================================================== */
+
+/* -- Scroll reveal -------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger.is-visible > * {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { animation-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2) { animation-delay: 0.12s; }
+.reveal-stagger.is-visible > *:nth-child(3) { animation-delay: 0.19s; }
+.reveal-stagger.is-visible > *:nth-child(4) { animation-delay: 0.26s; }
+.reveal-stagger.is-visible > *:nth-child(5) { animation-delay: 0.33s; }
+.reveal-stagger.is-visible > *:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -- Hero background aurora ------------------------------------------------ */
+@keyframes auroraShift {
+  0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  50%  { background-position: 20% 10%, 80% 20%, 40% 80%; }
+  100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+}
+
+.hero__bg {
+  animation: auroraShift 18s ease-in-out infinite alternate;
+}
+
+/* -- Floating illustration -------------------------------------------------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(1.5deg); }
+}
+
+.hero__art {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* -- Pulsing glow for badges / accents -------------------------------------- */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.pulse-dot {
+  animation: softPulse 2.2s ease-in-out infinite;
+}
+
+/* -- Card lift on hover ------------------------------------------------------ */
+.card-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.card-lift:hover,
+.card-lift:focus-within {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* -- Button ripple ------------------------------------------------------------ */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn__ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  animation: rippleAnim 600ms ease-out forwards;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* -- Navbar entrance / shrink -------------------------------------------------- */
+.site-header {
+  transition: background-color var(--transition-base), box-shadow var(--transition-base),
+              transform var(--transition-base), padding var(--transition-base);
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+  background-color: rgba(15, 23, 42, 0.92);
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* -- Accordion (FAQ) ------------------------------------------------------------ */
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-slow);
+}
+
+.accordion__panel-inner {
+  overflow: hidden;
+}
+
+.accordion__item.is-open .accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.accordion__icon {
+  transition: transform var(--transition-base);
+}
+
+.accordion__item.is-open .accordion__icon {
+  transform: rotate(45deg);
+}
+
+/* -- Modal ------------------------------------------------------------------------ */
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal.is-open .modal__dialog {
+  animation: modalIn var(--transition-slow);
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal.is-open .modal__overlay {
+  animation: overlayIn var(--transition-base);
+}
+
+/* -- Toast (buy confirmation) ------------------------------------------------------ */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toast.is-visible {
+  animation: toastIn var(--transition-base);
+}
+
+/* -- Marquee-like gentle drift for section blobs ------------------------------------ */
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -15px); }
+  100% { transform: translate(0, 0); }
+}
+
+.blob {
+  animation: drift 12s ease-in-out infinite;
+}
+
+/* -- Reduced motion -------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

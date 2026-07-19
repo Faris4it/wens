@@ -1,0 +1,49 @@
+<svg width="560" height="480" viewBox="0 0 560 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم توضيحي لمنصة الألعاب">
+  <defs>
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5B4BFF"/>
+      <stop offset="1" stop-color="#00D4FF"/>
+    </linearGradient>
+    <linearGradient id="padGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7B61FF"/>
+      <stop offset="1" stop-color="#5B4BFF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#00D4FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#00D4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="280" cy="240" r="220" fill="url(#glow)"/>
+
+  <!-- monitor -->
+  <g>
+    <rect x="140" y="90" width="280" height="190" rx="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+    <rect x="160" y="110" width="240" height="140" rx="8" fill="url(#screenGrad)"/>
+    <rect x="255" y="280" width="50" height="26" fill="#1E293B"/>
+    <rect x="225" y="304" width="110" height="10" rx="5" fill="#273449"/>
+    <polygon points="265,150 265,210 315,180" fill="#ffffff" opacity="0.9"/>
+  </g>
+
+  <!-- floating game pad -->
+  <g>
+    <rect x="70" y="300" width="150" height="80" rx="30" fill="url(#padGrad)"/>
+    <circle cx="110" cy="340" r="10" fill="#0F172A" opacity="0.35"/>
+    <rect x="104" y="334" width="12" height="12" rx="2" fill="#ffffff"/>
+    <circle cx="175" cy="330" r="8" fill="#00D4FF"/>
+    <circle cx="195" cy="345" r="8" fill="#22C55E"/>
+    <circle cx="175" cy="360" r="8" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- floating badge -->
+  <g>
+    <circle cx="430" cy="330" r="38" fill="#273449" stroke="#5B4BFF" stroke-width="2"/>
+    <path d="M416 330l9 9 18-18" stroke="#22C55E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- small stars -->
+  <circle cx="500" cy="120" r="4" fill="#00D4FF"/>
+  <circle cx="470" cy="80" r="3" fill="#7B61FF"/>
+  <circle cx="90" cy="150" r="3" fill="#00D4FF"/>
+  <circle cx="60" cy="220" r="4" fill="#5B4BFF"/>
+</svg>
