@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سوالف القهوة — وِنس</title>
+  <meta name="description" content="أسئلة تفتح السوالف اللي تستاهل — فنجال أول خفيف، وثاني أقرب، وثالث للمقرّبين. لعبة تجريبية من وِنس.">
+  <meta name="theme-color" content="#FAF6F0">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-mark.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page theme-warm">
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M20 12H5m0 0 5.5-5.7M5 12l5.5 5.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="g-qahwa" viewBox="0 0 120 120">
+    <path d="M36 60c1 15 6 30 24 30.5C78.5 91 83 75 84 60c-16 3-32 3-48 0Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M53 46c-4-5 3-8 0-13M68 46c-4-5 3-8 0-13" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <path d="M40 101c13 2.5 27 2.5 40 0" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="game-head">
+  <a class="game-back" href="../index.html#games"><svg class="ic"><use href="#i-arrow"/></svg>الرئيسية</a>
+  <span class="game-id"><svg style="color:#A8623A"><use href="#g-qahwa"/></svg>سوالف القهوة</span>
+  <span class="spacer" aria-hidden="true"></span>
+</header>
+
+<main class="stage">
+
+  <!-- ١ · الإعداد -->
+  <section data-screen="intro" class="is-active">
+    <svg class="g-glyph" viewBox="0 0 120 120" style="color:#A8623A"><use href="#g-qahwa"/></svg>
+    <h1 class="g-title">صبّوا… وسولفوا</h1>
+    <p class="g-tagline">أسئلة تفتح السوالف اللي تستاهل — فنجال ورا فنجال.</p>
+
+    <ul class="howto">
+      <li><span class="dot dot-amber"></span>اللي بيده الفنجان يجاوب أول… وبعده الباقين.</li>
+      <li><span class="dot dot-rose"></span>ما فيه إجابة غلط — بس فيه إجابة على السريع، وهذي خسارة.</li>
+      <li><span class="dot dot-sage"></span>كل فنجال أعمق من اللي قبله. كمّلوا على قد قلوبكم.</li>
+    </ul>
+
+    <div>
+      <p class="g-label">مين قاعد مع بعض؟</p>
+      <div class="chips" id="sessionChips">
+        <button class="chip-btn" data-value="couple" aria-pressed="false">ثنائي ❤️</button>
+        <button class="chip-btn" data-value="group" aria-pressed="true">العيلة والربع</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="g-label">من وين نبدأ؟</p>
+      <div class="chips" id="levelChips">
+        <button class="chip-btn" data-value="1" aria-pressed="true">فنجال أول<small>خفيف ولذيذ</small></button>
+        <button class="chip-btn" data-value="2" aria-pressed="false">فنجال ثاني<small>يقرّب أكثر</small></button>
+        <button class="chip-btn" data-value="3" aria-pressed="false">فنجال ثالث<small>للمقرّبين بس</small></button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" id="pourBtn">صبّوا القهوة ☕</button>
+  </section>
+
+  <!-- ٢ · البطاقة -->
+  <section data-screen="card">
+    <p class="g-label" style="text-align:center" id="levelLabel"></p>
+    <div class="q-card" id="qCard">
+      <span class="orn"><span class="dot dot-amber"></span><span class="dot dot-rose"></span><span class="dot dot-sage"></span></span>
+      <p class="q-text" id="qText"></p>
+      <p class="q-count" id="qCount"></p>
+    </div>
+    <p class="g-hint">اللي بيده الفنجان يجاوب أول 👀</p>
+    <button class="btn btn-primary btn-lg btn-block" id="nextQ">السؤال الجاي</button>
+    <button class="btn-quiet" id="endSession">نكتفي بهالقد</button>
+  </section>
+
+  <!-- ٣ · الختام -->
+  <section data-screen="end">
+    <svg class="g-glyph" viewBox="0 0 120 120" style="color:#A8623A"><use href="#g-qahwa"/></svg>
+    <h2 class="result-title">قبل لا تقومون…</h2>
+    <div class="q-card">
+      <span class="orn"><span class="dot dot-amber"></span><span class="dot dot-rose"></span><span class="dot dot-sage"></span></span>
+      <p class="q-text">وش أحلى شي انقال في هالجلسة؟ كل واحد يختار جملة سمعها الليلة وعلقت في باله.</p>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" id="nextLevel"></button>
+    <a class="btn-quiet" href="../index.html#games" style="text-align:center; display:block">رجوع للرئيسية</a>
+  </section>
+
+</main>
+
+<footer class="game-foot">وِنس · نسخة تجريبية — رأيكم يهمنا</footer>
+
+<script src="../js/games/shell.js"></script>
+<script src="../js/games/qahwa.js"></script>
+</body>
+</html>

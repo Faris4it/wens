@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خمس ثواني — وِنس</title>
+  <meta name="description" content="سمّ ثلاثة أشياء… عندك خمس ثواني بس. لعبة سرعة وضحك من وِنس — فريقين وأول من يوصل النقاط يفوز.">
+  <meta name="theme-color" content="#FAF6F0">
+  <link rel="icon" type="image/svg+xml" href="../assets/logo-mark.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body class="game-page theme-warm">
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M20 12H5m0 0 5.5-5.7M5 12l5.5 5.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="g-khams" viewBox="0 0 120 120">
+    <path d="M60 34c16-.6 28.6 12.7 28.2 28.2C87.8 78.3 76 91.4 60 91.4c-15.4 0-28.6-12.6-28.6-28.6C31.4 47.2 43.6 34.6 60 34Z" fill="none" stroke="currentColor" stroke-width="6"/>
+    <path d="M60 63 74 49" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M60 25v-7M51 18h18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M97 30l6-6M23 30l-6-6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="game-head">
+  <a class="game-back" href="../index.html#games"><svg class="ic"><use href="#i-arrow"/></svg>الرئيسية</a>
+  <span class="game-id"><svg style="color:var(--amber-deep)"><use href="#g-khams"/></svg>خمس ثواني</span>
+  <span class="spacer" aria-hidden="true"></span>
+</header>
+
+<main class="stage">
+
+  <!-- ١ · الإعداد -->
+  <section data-screen="intro" class="is-active">
+    <svg class="g-glyph" viewBox="0 0 120 120" style="color:var(--amber-deep)"><use href="#g-khams"/></svg>
+    <h1 class="g-title">سمّ ثلاثة… بسرعة!</h1>
+    <p class="g-tagline">تتوقعها سهلة؟ العدّاد يقول غير.</p>
+
+    <ul class="howto">
+      <li><span class="dot dot-amber"></span>انقسموا فريقين، وتناوبوا على التحديات.</li>
+      <li><span class="dot dot-sage"></span>اقروا التحدي بصوت عالي واضغطوا «ابدأ» — عندكم خمس ثواني.</li>
+      <li><span class="dot dot-rose"></span>الفريق الثاني هو الحَكَم: جابها ولا لا؟ أول من يوصل الهدف يفوز.</li>
+    </ul>
+
+    <div>
+      <p class="g-label">وش الجو؟</p>
+      <div class="chips" id="packChips">
+        <button class="chip-btn" data-value="mix" aria-pressed="true">منوّع</button>
+        <button class="chip-btn" data-value="ramadan" aria-pressed="false">ليالي رمضان</button>
+        <button class="chip-btn" data-value="family" aria-pressed="false">جلسة العيلة</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="g-label">الفوز عند كم نقطة؟</p>
+      <div class="chips" id="targetChips">
+        <button class="chip-btn" data-value="5" aria-pressed="false">٥ — سريعة</button>
+        <button class="chip-btn" data-value="7" aria-pressed="true">٧ — عادية</button>
+        <button class="chip-btn" data-value="10" aria-pressed="false">١٠ — ملحمة</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block" id="startBtn">يلا نبدأ</button>
+  </section>
+
+  <!-- ٢ · دور الفريق -->
+  <section data-screen="turn">
+    <div class="score-row">
+      <span class="score-pill" id="pillA"><span class="dot dot-amber"></span>فريق الدلّة<span class="num" id="scoreA">٠</span></span>
+      <span class="score-pill" id="pillB"><span class="dot dot-night"></span>فريق الفنجال<span class="num" id="scoreB">٠</span></span>
+    </div>
+    <div class="play-card">
+      <p>الدور على</p>
+      <p class="turn-name" id="turnTeam"></p>
+      <p class="g-hint">اختاروا متسابقكم… والفريق الثاني يمسك التحكيم 👀</p>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" id="showPrompt">اعرضوا التحدي</button>
+  </section>
+
+  <!-- ٣ · التحدي الحي -->
+  <section data-screen="live">
+    <p class="prompt-text" id="promptText"></p>
+    <div class="timer-wrap">
+      <svg class="timer-ring" id="ring" viewBox="0 0 120 120">
+        <path class="track" d="M22.6 81.4 C22.3 78.3 20.6 69.1 20.5 62.9 C20.3 56.8 19.8 50.3 21.7 44.7 C23.6 39.0 27.4 33.4 31.6 29.0 C35.9 24.6 41.3 20.0 47.2 18.2 C53.0 16.5 60.9 16.8 66.7 18.4 C72.6 19.9 77.0 23.8 82.1 27.3 C87.1 30.8 93.5 34.3 97.1 39.4 C100.7 44.4 103.2 51.3 103.6 57.5 C104.0 63.7 102.4 70.7 99.7 76.3 C97.0 81.9 92.3 87.4 87.5 91.1 C82.6 94.8 76.5 96.7 70.6 98.6 C64.8 100.5 55.4 101.7 52.4 102.4" fill="none" stroke-width="7" stroke-linecap="round" pathLength="100"/>
+        <path class="fill" d="M22.6 81.4 C22.3 78.3 20.6 69.1 20.5 62.9 C20.3 56.8 19.8 50.3 21.7 44.7 C23.6 39.0 27.4 33.4 31.6 29.0 C35.9 24.6 41.3 20.0 47.2 18.2 C53.0 16.5 60.9 16.8 66.7 18.4 C72.6 19.9 77.0 23.8 82.1 27.3 C87.1 30.8 93.5 34.3 97.1 39.4 C100.7 44.4 103.2 51.3 103.6 57.5 C104.0 63.7 102.4 70.7 99.7 76.3 C97.0 81.9 92.3 87.4 87.5 91.1 C82.6 94.8 76.5 96.7 70.6 98.6 C64.8 100.5 55.4 101.7 52.4 102.4" fill="none" stroke-width="7" stroke-linecap="round" pathLength="100"/>
+      </svg>
+      <span class="timer-num" id="countNum">٥</span>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" id="goBtn">ابدأ العد!</button>
+    <div id="judgeRow" hidden style="display:grid; gap:10px">
+      <p class="g-title" style="font-size:24px">انتهى الوقت — الحكم؟</p>
+      <button class="btn btn-primary btn-lg btn-block" id="passBtn">جابها ✓ (+١)</button>
+      <button class="btn btn-ghost btn-lg btn-block" id="failBtn">ما جابها ✗</button>
+    </div>
+  </section>
+
+  <!-- ٤ · الفوز -->
+  <section data-screen="win">
+    <p class="result-emoji">🏆</p>
+    <h2 class="result-title" id="winTitle"></h2>
+    <p class="result-sub" id="winScore"></p>
+    <button class="btn btn-primary btn-lg btn-block" id="rematch">جولة ثانية</button>
+    <button class="btn-quiet" id="toSetup">تغيير الإعدادات</button>
+  </section>
+
+</main>
+
+<footer class="game-foot">وِنس · نسخة تجريبية — رأيكم يهمنا</footer>
+
+<script src="../js/games/shell.js"></script>
+<script src="../js/games/khams.js"></script>
+</body>
+</html>

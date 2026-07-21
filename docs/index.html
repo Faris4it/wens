@@ -3,362 +3,529 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>وِنس | بوابتك لأفضل الألعاب الرقمية</title>
-  <meta name="description" content="وِنس منصة عربية تتيح لك الوصول إلى أفضل الألعاب الرقمية الأصلية بأسعار مناسبة وبخطوات شراء سريعة وآمنة.">
-
-  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
-
-  <!-- Google Fonts: Cairo + Tajawal -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <title>وِنس — وش ناوين الليلة؟</title>
+  <meta name="description" content="وِنس: منصة سعودية للألعاب الجماعية. ألعاب وتحديات تفتحها من المتصفح بثواني — للشلة، للعيلة، للثنائي، ولليالي رمضان.">
+  <meta name="theme-color" content="#FAF6F0">
+  <meta property="og:title" content="وِنس — وش ناوين الليلة؟">
+  <meta property="og:description" content="ألعاب جماعية بلهجتنا، بدون تحميل. الونسة تبدأ من هنا.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">تخطَّ إلى المحتوى الرئيسي</a>
 
-  <!-- ============================ Header / Navbar ============================ -->
-  <header class="site-header">
-    <nav class="navbar container" aria-label="التنقل الرئيسي">
-      <a href="#top" class="brand" aria-label="وِنس - الصفحة الرئيسية">
-        <img src="assets/icons/logo.svg" alt="" width="40" height="40">
-        <span>
-          وِنس
-          <span class="brand__tagline">ألعاب رقمية بأسعار مناسبة</span>
-        </span>
-      </a>
+<!-- ═══════════════════ مكتبة الرموز (SVG Sprite) ═══════════════════
+     كل الأيقونات والرسوم معرّفة مرة واحدة ويُعاد استخدامها بـ <use> -->
+<svg class="sprite" aria-hidden="true">
+  <!-- أيقونات واجهة -->
+  <symbol id="i-people" viewBox="0 0 24 24">
+    <circle cx="9" cy="8.5" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M3.5 19.5c.6-3.6 2.8-5.4 5.5-5.4s4.9 1.8 5.5 5.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="17" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M16.4 14.6c2.3.3 3.8 1.9 4.2 4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <path d="M12 3.2c4.9-.2 8.7 3.9 8.6 8.6-.1 4.9-3.7 8.9-8.6 8.9-4.7 0-8.7-3.8-8.7-8.7C3.3 7.3 7 3.4 12 3.2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M12 7.5v5l3.2 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M20 12H5m0 0 5.5-5.7M5 12l5.5 5.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24">
+    <path d="M12 3.5v5m0 7v5M3.5 12h5m7 0h5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24">
+    <path d="M8.6 5.8c-.2 4.2-.2 8.3 0 12.5 3.6-2 7-4.1 10.2-6.3C15.6 9.8 12.2 7.7 8.6 5.8Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24">
+    <path d="M4.5 4.5 19.4 19.6M19.5 4.5 4.6 19.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24">
+    <rect x="3.6" y="3.6" width="16.8" height="16.8" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="17" cy="7" r="1.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24">
+    <path d="M14.2 4c.5 2.6 2 4.1 4.8 4.4v3c-1.9 0-3.5-.6-4.8-1.6v5.7c0 3.2-2.3 5.5-5.4 5.5-3 0-5.3-2.3-5.3-5.3 0-3.4 3-5.8 6.3-5.2v3.1c-1.7-.5-3.2.6-3.2 2.1 0 1.3 1 2.3 2.3 2.3 1.4 0 2.3-1 2.3-2.6V4h3Z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-snap" viewBox="0 0 24 24">
+    <path d="M12 3.6c3 0 4.9 2.2 4.9 5.1l-.1 2.2c.7.4 1.5.2 2.2-.1.4.9-.9 1.7-1.8 2 .5 1.9 2.2 3.2 3.8 3.5-.3 1-1.7 1.4-2.9 1.5-.3.8-.5 1.3-1.2 1.2-.9-.1-1.7-.3-2.7.4-.7.6-1.4.9-2.2.9s-1.5-.3-2.2-.9c-1-.7-1.8-.5-2.7-.4-.7.1-.9-.4-1.2-1.2-1.2-.1-2.6-.5-2.9-1.5 1.6-.3 3.3-1.6 3.8-3.5-.9-.3-2.2-1.1-1.8-2 .7.3 1.5.5 2.2.1L7.1 8.7c0-2.9 1.9-5.1 4.9-5.1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+  </symbol>
 
-      <ul class="nav-links">
-        <li><a href="#hero">الرئيسية</a></li>
-        <li><a href="#games">الألعاب</a></li>
-        <li><a href="#features">المميزات</a></li>
-        <li><a href="#faq">الأسئلة الشائعة</a></li>
-        <li><a href="#contact">تواصل معنا</a></li>
-      </ul>
+  <!-- الحلقة المرسومة باليد — لأغلفة الألعاب -->
+  <symbol id="ring-cover" viewBox="0 0 120 120">
+    <path d="M22.6 81.4 C22.3 78.3 20.6 69.1 20.5 62.9 C20.3 56.8 19.8 50.3 21.7 44.7 C23.6 39.0 27.4 33.4 31.6 29.0 C35.9 24.6 41.3 20.0 47.2 18.2 C53.0 16.5 60.9 16.8 66.7 18.4 C72.6 19.9 77.0 23.8 82.1 27.3 C87.1 30.8 93.5 34.3 97.1 39.4 C100.7 44.4 103.2 51.3 103.6 57.5 C104.0 63.7 102.4 70.7 99.7 76.3 C97.0 81.9 92.3 87.4 87.5 91.1 C82.6 94.8 76.5 96.7 70.6 98.6 C64.8 100.5 55.4 101.7 52.4 102.4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+  </symbol>
 
-      <div class="navbar__actions">
-        <label class="search-bar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">ابحث عن لعبة</span>
-          <input type="search" class="js-search-input" placeholder="ابحث عن لعبة...">
-        </label>
+  <!-- هلال — لبطاقة رمضان -->
+  <symbol id="g-riddle" viewBox="0 0 120 120">
+    <path d="M72 26C50 33 41 52 46.5 71 51 85 62 93 75 93 58 88 50 72 52.5 56 54.5 43 62 32 72 26Z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M80 46l1.8 5 5 1.8-5 1.8-1.8 5-1.8-5-5-1.8 5-1.8 1.8-5Z" fill="currentColor"/>
+  </symbol>
 
-        <button class="btn btn--ghost btn--sm js-login-trigger" type="button">تسجيل الدخول</button>
+  <!-- رموز الألعاب التجريبية الثلاث -->
+  <symbol id="g-dakheel" viewBox="0 0 120 120"><!-- الدخيل: حلقة وفيها نقطة برا -->
+    <path d="M27.6 76.4c-.3-2.6-1.5-10.2-1.6-15.3-.2-5.1-.6-10.5 1-15.2 1.6-4.7 4.7-9.4 8.2-13.1 3.6-3.7 8.1-7.5 13-9 4.9-1.4 11.4-1.2 16.3.2 4.9 1.3 8.6 4.5 12.8 7.4 4.2 2.9 9.5 5.9 12.5 10.1 3 4.2 5.1 9.9 5.4 15.1.3 5.2-1 11-3.3 15.6-2.3 4.7-6.2 9.2-10.2 12.3-4 3.1-9.1 4.7-14 6.3-4.9 1.6-12.7 2.6-15.2 3.2" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="48" cy="52" r="7" fill="currentColor" opacity=".92"/>
+    <circle cx="76" cy="44" r="6" fill="currentColor" opacity=".92"/>
+    <circle cx="20" cy="103" r="7.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="g-khams" viewBox="0 0 120 120"><!-- خمس ثواني: ساعة إيقاف -->
+    <path d="M60 34c16-.6 28.6 12.7 28.2 28.2C87.8 78.3 76 91.4 60 91.4c-15.4 0-28.6-12.6-28.6-28.6C31.4 47.2 43.6 34.6 60 34Z" fill="none" stroke="currentColor" stroke-width="6"/>
+    <path d="M60 63 74 49" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M60 25v-7M51 18h18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M97 30l6-6M23 30l-6-6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="g-qahwa" viewBox="0 0 120 120"><!-- سوالف القهوة: فنجان وبخار -->
+    <path d="M36 60c1 15 6 30 24 30.5C78.5 91 83 75 84 60c-16 3-32 3-48 0Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M53 46c-4-5 3-8 0-13M68 46c-4-5 3-8 0-13" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <path d="M40 101c13 2.5 27 2.5 40 0" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+</svg>
 
-        <button class="nav-toggle" type="button" aria-label="فتح قائمة التنقل" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+<!-- ═══════════════════ التنقّل ═══════════════════ -->
+<header class="site-head">
+  <nav class="nav" aria-label="التنقل الرئيسي">
+    <a class="nav-logo" href="#top" aria-label="ونس — الرئيسية">
+      <img src="assets/logo.svg" alt="وِنس" width="118" height="41">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#occasions">القعدات</a></li>
+      <li><a href="#games">الألعاب</a></li>
+      <li><a href="#how">كيف تبدأ</a></li>
+      <li><a href="#why">ليش وِنس</a></li>
+      <li><a href="#faq">الأسئلة</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="#games">ابدأ الونسة</a>
+    <button class="nav-burger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- قائمة الجوال -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <ul>
+    <li><a href="#occasions">القعدات</a></li>
+    <li><a href="#games">الألعاب</a></li>
+    <li><a href="#how">كيف تبدأ</a></li>
+    <li><a href="#why">ليش وِنس</a></li>
+    <li><a href="#faq">الأسئلة</a></li>
+  </ul>
+  <a class="btn btn-primary" href="#games">ابدأ الونسة</a>
+</div>
+
+<main id="top">
+
+  <!-- ═══════════════════ الواجهة ═══════════════════ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>
+          <svg class="ic"><use href="#i-spark"/></svg>
+          منصة سعودية للألعاب الجماعية
+        </p>
+        <h1 class="hero-title" data-reveal>
+          وش ناوين
+          <span class="circled">
+            الليلة؟
+            <svg class="circled-stroke" viewBox="0 0 260 110" aria-hidden="true" preserveAspectRatio="none">
+              <path d="M25.3 74.9 C23.5 72.5 16.5 65.3 14.9 60.4 C13.4 55.6 13.3 50.6 16.0 45.9 C18.8 41.2 24.2 36.3 31.5 32.2 C38.8 28.0 48.7 24.2 59.6 21.1 C70.4 17.9 83.4 14.8 96.6 13.4 C109.8 11.9 125.2 11.6 138.8 12.4 C152.4 13.2 166.0 15.9 178.2 18.1 C190.3 20.4 202.0 23.0 212.0 26.2 C222.0 29.4 232.0 33.0 238.2 37.3 C244.4 41.5 248.1 46.9 249.1 51.8 C250.1 56.7 248.1 62.1 244.2 66.8 C240.2 71.5 233.7 76.4 225.3 80.2 C216.8 83.9 205.2 87.0 193.6 89.4 C182.0 91.8 168.7 93.3 155.5 94.6 C142.3 95.9 127.9 97.4 114.2 97.2 C100.5 97.0 80.1 94.2 73.3 93.6"/>
+            </svg>
+          </span>
+        </h1>
+        <p class="hero-sub" data-reveal>
+          خلّ السالفة علينا — ألعاب وتحديات تفتحونها من المتصفح بثواني،
+          بجوّ يناسب <span class="rotator" id="rotator">شلّتك</span>
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="btn btn-primary btn-lg" href="#games">
+            ابدأ الونسة
+            <svg class="ic"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#occasions">استكشف القعدات</a>
+        </div>
+        <ul class="hero-proof" data-reveal>
+          <li><span class="dot dot-amber"></span>‏٣ ألعاب تجريبية</li>
+          <li><span class="dot dot-sage"></span>بدون تحميل</li>
+          <li><span class="dot dot-rose"></span>شاشة وحدة تكفي الكل</li>
+        </ul>
       </div>
-    </nav>
-  </header>
 
-  <main id="main-content">
-    <div id="top"></div>
+      <!-- مسرح الواجهة: حلقة كبيرة تدور حولها بطاقات الألعاب -->
+      <div class="hero-stage" aria-hidden="true">
+        <svg class="stage-ring" viewBox="0 0 520 520">
+          <path d="M58.9 341.4 C57.3 330.7 50.5 298.6 49.3 277.0 C48.1 255.4 47.8 233.1 51.8 212.0 C55.8 190.9 63.1 169.4 73.3 150.4 C83.6 131.5 97.7 113.6 113.2 98.4 C128.7 83.1 146.6 68.9 166.3 59.0 C186.0 49.2 209.2 41.4 231.2 39.2 C253.2 36.9 277.4 40.0 298.3 45.4 C319.2 50.8 338.2 61.0 356.7 71.5 C375.1 82.1 392.8 94.3 409.1 108.9 C425.5 123.4 443.0 139.9 454.9 158.7 C466.7 177.4 475.8 199.6 480.0 221.1 C484.2 242.7 483.4 266.3 480.1 288.1 C476.9 310.0 470.3 332.4 460.5 352.1 C450.7 371.8 437.0 391.0 421.3 406.4 C405.7 421.8 385.7 434.4 366.6 444.6 C347.6 454.8 327.5 462.3 306.9 467.9 C286.2 473.4 264.6 478.2 242.6 478.1 C220.6 478.0 186.2 469.1 174.9 467.3" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+        </svg>
+        <span class="stage-glow"></span>
+        <span class="stage-dot dot-amber" style="--x:76%; --y:14%"></span>
+        <span class="stage-dot dot-rose"  style="--x:8%;  --y:38%"></span>
+        <span class="stage-dot dot-sage"  style="--x:64%; --y:92%"></span>
 
-    <!-- ============================ Hero ============================ -->
-    <section class="hero" id="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container">
-        <div class="hero__content">
-          <span class="eyebrow">منصة عربية موثوقة للألعاب الرقمية</span>
-          <h1>
-            بوابتك لأفضل <span class="text-gradient">الألعاب الرقمية</span> بأسعار مناسبة
-          </h1>
-          <p>وِنس منصة بسيطة وآمنة توفّر لك ألعابًا رقمية أصلية بأسعار تناسب الجميع، مع تجربة شراء سريعة ودعم فني يهتم بك.</p>
-
-          <div class="hero__actions">
-            <a href="#games" class="btn btn--primary">تصفح الألعاب</a>
-            <a href="#features" class="btn btn--secondary">كيف يعمل الموقع؟</a>
-          </div>
-
-          <div class="hero__stats">
-            <div class="hero__stat">
-              <strong>+120</strong>
-              <span>لعبة رقمية متوفرة</span>
-            </div>
-            <div class="hero__stat">
-              <strong>+8,000</strong>
-              <span>عميل راضٍ</span>
-            </div>
-            <div class="hero__stat">
-              <strong>4.8/5</strong>
-              <span>تقييم المستخدمين</span>
-            </div>
-          </div>
+        <div class="float-card fc-1">
+          <span class="fc-icon" style="--tint: var(--night)"><svg><use href="#g-dakheel"/></svg></span>
+          <span class="fc-name">الدخيل</span>
+          <span class="fc-meta"><svg class="ic"><use href="#i-people"/></svg>‏٣–١٠</span>
         </div>
-
-        <div class="hero__art">
-          <img src="assets/images/hero-illustration.svg" alt="رسم توضيحي يجمع بين شاشة عرض ووحدة تحكم ألعاب" width="560" height="480">
+        <div class="float-card fc-2">
+          <span class="fc-icon" style="--tint: var(--amber)"><svg><use href="#g-khams"/></svg></span>
+          <span class="fc-name">خمس ثواني</span>
+          <span class="fc-meta"><svg class="ic"><use href="#i-people"/></svg>‏٤+</span>
         </div>
-      </div>
-    </section>
-
-    <!-- ============================ Features ============================ -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">لماذا وِنس؟</span>
-          <h2 class="section__title">تجربة شراء مصممة لراحتك</h2>
-          <p class="section__subtitle">كل ما تحتاجه للحصول على ألعابك المفضلة بثقة وسهولة.</p>
-        </div>
-
-        <div class="features-grid reveal-stagger">
-          <article class="feature-card card-lift reveal">
-            <span class="feature-card__icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 9 12 9s5 1.6 5 3.5-2.2 3.5-5 3.5-5-1.6-5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </span>
-            <h3>أسعار مناسبة</h3>
-            <p>باقات وأسعار مدروسة تناسب جميع الميزانيات دون التنازل عن الجودة.</p>
-          </article>
-
-          <article class="feature-card card-lift reveal">
-            <span class="feature-card__icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>شراء سريع</h3>
-            <p>خطوات بسيطة من الاختيار إلى الاستلام دون تعقيد أو انتظار طويل.</p>
-          </article>
-
-          <article class="feature-card card-lift reveal">
-            <span class="feature-card__icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>ألعاب رقمية أصلية</h3>
-            <p>جميع الألعاب مرخّصة وأصلية 100% من مزودين موثوقين.</p>
-          </article>
-
-          <article class="feature-card card-lift reveal">
-            <span class="feature-card__icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>دعم فني</h3>
-            <p>فريق دعم جاهز لمساعدتك في أي وقت قبل الشراء وبعده.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ Popular Games ============================ -->
-    <section class="section section--muted" id="games">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">مكتبة الألعاب</span>
-          <h2 class="section__title">الألعاب الأكثر رواجًا</h2>
-          <p class="section__subtitle">تصفّح مجموعة مختارة من الألعاب الرقمية الأصلية وابحث عن لعبتك القادمة.</p>
-        </div>
-
-        <div class="games-toolbar">
-          <button class="filter-chip is-active" type="button" data-category="الكل">الكل</button>
-          <button class="filter-chip" type="button" data-category="أكشن">أكشن</button>
-          <button class="filter-chip" type="button" data-category="سباقات">سباقات</button>
-          <button class="filter-chip" type="button" data-category="مغامرات">مغامرات</button>
-          <button class="filter-chip" type="button" data-category="رياضة">رياضة</button>
-          <button class="filter-chip" type="button" data-category="ألغاز">ألغاز</button>
-          <button class="filter-chip" type="button" data-category="بقاء">بقاء</button>
-        </div>
-
-        <div class="games-grid js-games-grid" aria-live="polite"></div>
-        <p class="games-empty js-games-empty">لا توجد ألعاب مطابقة لبحثك، جرّب كلمة أخرى.</p>
-
-        <div class="games-footer">
-          <a href="#top" class="btn btn--secondary">عرض جميع الألعاب</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ Why choose Wens ============================ -->
-    <section class="section">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">ثقتك تهمنا</span>
-          <h2 class="section__title">لماذا يختار اللاعبون وِنس؟</h2>
-        </div>
-
-        <div class="why-grid reveal-stagger">
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <h3>حماية وأمان</h3>
-              <p>عمليات الدفع والحسابات محمية بأعلى معايير الأمان الرقمي.</p>
-            </div>
-          </div>
-
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
-            </span>
-            <div>
-              <h3>تفعيل فوري</h3>
-              <p>احصل على لعبتك خلال دقائق من إتمام عملية الشراء.</p>
-            </div>
-          </div>
-
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <h3>جودة مضمونة</h3>
-              <p>نختار الألعاب بعناية لضمان تجربة لعب ممتعة وخالية من المشاكل.</p>
-            </div>
-          </div>
-
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <h3>أسعار شفافة</h3>
-              <p>لا رسوم خفية، السعر الذي تراه هو ما تدفعه بالضبط.</p>
-            </div>
-          </div>
-
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <h3>مجتمع لاعبين</h3>
-              <p>انضم إلى آلاف اللاعبين العرب الذين يثقون بمنصة وِنس.</p>
-            </div>
-          </div>
-
-          <div class="why-item reveal">
-            <span class="why-item__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <h3>دعم عربي مباشر</h3>
-              <p>تواصل مع فريق دعم يتحدث لغتك ويفهم احتياجك.</p>
-            </div>
-          </div>
+        <div class="float-card fc-3">
+          <span class="fc-icon" style="--tint: var(--rose)"><svg><use href="#g-qahwa"/></svg></span>
+          <span class="fc-name">سوالف القهوة</span>
+          <span class="fc-meta"><svg class="ic"><use href="#i-people"/></svg>‏٢–٨</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============================ Testimonials ============================ -->
-    <section class="section section--muted">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">آراء عملائنا</span>
-          <h2 class="section__title">ماذا يقول لاعبونا عن وِنس؟</h2>
-        </div>
-
-        <div class="testimonials-grid js-testimonials-grid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- ============================ FAQ ============================ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">الأسئلة الشائعة</span>
-          <h2 class="section__title">لديك سؤال؟ نجاوبك هنا</h2>
-        </div>
-
-        <div class="accordion js-accordion reveal"></div>
-      </div>
-    </section>
-
-    <!-- ============================ CTA banner ============================ -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="cta-banner reveal">
-          <h2>جاهز تبدأ تجربتك مع وِنس؟</h2>
-          <p>انضم اليوم واكتشف مكتبة ضخمة من الألعاب الرقمية الأصلية بأسعار تناسبك.</p>
-          <a href="#games" class="btn btn--secondary">تصفح الألعاب الآن</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============================ Footer ============================ -->
-  <footer class="site-footer">
+  <!-- ═══════════════════ القعدات ═══════════════════ -->
+  <section class="section" id="occasions">
     <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>القعدات</p>
+        <h2>لكل قعدة ونستها</h2>
+        <p class="lead">نفس المكان ونفس الناس، بس الجو يتغيّر. اختاروا قعدتكم — والألعاب علينا.</p>
+      </header>
+      <div class="occasion-grid">
+        <a href="games/dakheel.html" class="occasion-card oc-shilla" data-reveal>
+          <span class="oc-motif">
+            <span class="dot dot-amber"></span><span class="dot dot-amber sm"></span><span class="dot dot-amber sm"></span>
+          </span>
+          <h3>سهرة الشلة</h3>
+          <p>طقطقة وتحديات وضحك ما يوقف لين الفجر.</p>
+          <span class="oc-foot"><span class="chip">جرّب: الدخيل</span><svg class="ic oc-arrow"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a href="games/khams.html" class="occasion-card oc-family" data-reveal>
+          <span class="oc-motif">
+            <span class="dot dot-sage"></span><span class="dot dot-sage"></span><span class="dot dot-sage sm"></span><span class="dot dot-sage sm"></span>
+          </span>
+          <h3>قعدة العيلة</h3>
+          <p>ألعاب يدخل فيها الكبير قبل الصغير.</p>
+          <span class="oc-foot"><span class="chip">جرّب: خمس ثواني</span><svg class="ic oc-arrow"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a href="games/qahwa.html" class="occasion-card oc-couple" data-reveal>
+          <span class="oc-motif">
+            <span class="dot dot-rose"></span><span class="dot dot-rose"></span>
+          </span>
+          <h3>جلسة الثنائي</h3>
+          <p>أسئلة وتحديات تقرّبكم أكثر من قبل.</p>
+          <span class="oc-foot"><span class="chip">جرّب: سوالف القهوة</span><svg class="ic oc-arrow"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a href="games/khams.html?pack=ramadan" class="occasion-card oc-ramadan" data-reveal>
+          <span class="oc-motif">
+            <svg class="oc-moon" viewBox="0 0 120 120"><use href="#g-riddle"/></svg>
+          </span>
+          <h3>ليالي رمضان</h3>
+          <p>فوازير وسوالف لأطول السهرات وأحلاها.</p>
+          <span class="oc-foot"><span class="chip">جرّب: تحدي رمضان</span><svg class="ic oc-arrow"><use href="#i-arrow"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ الألعاب التجريبية ═══════════════════ -->
+  <section class="section section-band" id="games">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>الألعاب</p>
+        <h2>ثلاث ألعاب… ثلاثة أجواء</h2>
+        <p class="lead">نسخ تجريبية نبني عليها مستقبل وِنس — العبوها الليلة وقولوا لنا رأيكم.</p>
+      </header>
+
+      <div class="demo-grid">
+        <!-- الدخيل -->
+        <article class="demo-card dc-dakheel" data-reveal>
+          <a class="demo-cover" href="games/dakheel.html" aria-label="العب الدخيل">
+            <svg class="cover-ring"><use href="#ring-cover"/></svg>
+            <svg class="cover-glyph"><use href="#g-dakheel"/></svg>
+            <span class="dot dot-amber cvd-1"></span><span class="dot dot-rose cvd-2"></span>
+          </a>
+          <div class="demo-body">
+            <div class="demo-tags"><span class="game-tag t-shilla">الشلة</span><span class="game-tag t-plain">تخمين وشك</span></div>
+            <h3>الدخيل</h3>
+            <p>كلكم شفتم نفس الكلمة… إلا واحد. اسألوا، شكّوا، وصوّتوا — قبل ما يعرف الدخيل الكلمة وينجا.</p>
+            <ul class="game-meta">
+              <li><svg class="ic"><use href="#i-people"/></svg>‏٣–١٠</li>
+              <li><svg class="ic"><use href="#i-clock"/></svg>‏~١٠ دقايق</li>
+            </ul>
+            <a class="btn btn-primary demo-cta" href="games/dakheel.html">العبوها الحين<svg class="ic"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <!-- خمس ثواني -->
+        <article class="demo-card dc-khams" data-reveal>
+          <a class="demo-cover" href="games/khams.html" aria-label="العب خمس ثواني">
+            <svg class="cover-ring"><use href="#ring-cover"/></svg>
+            <svg class="cover-glyph"><use href="#g-khams"/></svg>
+            <span class="dot dot-night cvd-1"></span><span class="dot dot-sage cvd-2"></span>
+          </a>
+          <div class="demo-body">
+            <div class="demo-tags"><span class="game-tag t-family">العيلة والشلة</span><span class="game-tag t-plain">سرعة وضحك</span></div>
+            <h3>خمس ثواني</h3>
+            <p>«سمّ ثلاث أكلات فيها رز» — سهلة؟ جرّبها والعدّاد شغال. فريقين، وأول من يوصل سبع نقاط يفوز.</p>
+            <ul class="game-meta">
+              <li><svg class="ic"><use href="#i-people"/></svg>‏٤+</li>
+              <li><svg class="ic"><use href="#i-clock"/></svg>‏~١٥ دقيقة</li>
+            </ul>
+            <a class="btn btn-primary demo-cta" href="games/khams.html">العبوها الحين<svg class="ic"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <!-- سوالف القهوة -->
+        <article class="demo-card dc-qahwa" data-reveal>
+          <a class="demo-cover" href="games/qahwa.html" aria-label="العب سوالف القهوة">
+            <svg class="cover-ring"><use href="#ring-cover"/></svg>
+            <svg class="cover-glyph"><use href="#g-qahwa"/></svg>
+            <span class="dot dot-amber cvd-1"></span><span class="dot dot-night cvd-2"></span>
+          </a>
+          <div class="demo-body">
+            <div class="demo-tags"><span class="game-tag t-couple">الثنائي والعيلة</span><span class="game-tag t-plain">سوالف تقرّب</span></div>
+            <h3>سوالف القهوة</h3>
+            <p>أسئلة تفتح السوالف اللي تستاهل — فنجال أول خفيف، وثاني أقرب، وثالث ما ينقال إلا للمقرّبين.</p>
+            <ul class="game-meta">
+              <li><svg class="ic"><use href="#i-people"/></svg>‏٢–٨</li>
+              <li><svg class="ic"><use href="#i-clock"/></svg>‏على كيفكم</li>
+            </ul>
+            <a class="btn btn-primary demo-cta" href="games/qahwa.html">العبوها الحين<svg class="ic"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+
+      <p class="demo-note" data-reveal>وش نضيف بعدها؟ هالثلاث تجارب ترسم طريقنا — ورأيكم بعد كل جولة هو اللي يحدد الجاية.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ كيف تبدأ ═══════════════════ -->
+  <section class="section" id="how">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>الطريقة</p>
+        <h2>ثلاث خطوات… وتبدأ الضحكة</h2>
+      </header>
+      <div class="steps">
+        <svg class="steps-trail" viewBox="0 0 900 140" aria-hidden="true" preserveAspectRatio="none">
+          <path d="M880 70 C860 64 803 30 760 34 C717 38 672 95 620 96 C568 97 503 39 450 40 C397 41 348 99 300 100 C252 101 207 48 160 44 C113 40 43 72 20 78" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.5 16"/>
+        </svg>
+        <div class="step" data-reveal>
+          <span class="step-num">١</span>
+          <h3>اختاروا قعدتكم</h3>
+          <p>شلة، عيلة، ثنائي، ولا ليلة رمضانية؟ حددوا الجو.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step-num">٢</span>
+          <h3>خذوا الترشيح</h3>
+          <p>نقترح لكم ألعاب على قد عددكم ومزاجكم.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step-num">٣</span>
+          <h3>شاشة وحدة تكفي</h3>
+          <p>افتحوا اللعبة وخلّوا الجوال يدور عليكم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ليش وِنس (فقرة الليل) ═══════════════════ -->
+  <section class="section section-night" id="why">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>ليش وِنس</p>
+        <h2>مصنوع لقعداتنا، مو مترجَم لها</h2>
+      </header>
+      <div class="bento">
+        <article class="bento-cell b-wide" data-reveal>
+          <h3>بلهجتنا وسوالفنا</h3>
+          <p>ألعاب مكتوبة من أول سطر بلسان أهل القعدة — محلية، قريبة، وتضبط مع كل الأجواء. لا ترجمات ركيكة ولا نكت ما تضحّك.</p>
+        </article>
+        <article class="bento-cell" data-reveal>
+          <h3>بدون تحميل</h3>
+          <p>رابط واحد يفتح من أي متصفح، على طول.</p>
+        </article>
+        <article class="bento-cell" data-reveal>
+          <h3>من الجوال للشاشة</h3>
+          <p>جوال بيد المقدّم، أو شاشة المجلس الكبيرة — يضبط.</p>
+        </article>
+        <button class="bento-cell b-flip" id="flipCard" data-reveal aria-pressed="false" aria-label="بطاقة تجربة — اضغط لقلبها">
+          <span class="flip-inner">
+            <span class="flip-face flip-front">
+              <svg class="flip-mark" viewBox="0 0 104 104"><use href="#ring-cover"/></svg>
+              <span>جرّبها بنفسك<small>اضغط البطاقة</small></span>
+            </span>
+            <span class="flip-face flip-back">
+              <span class="flip-q">لو تعزم شخص واحد بس على قهوتكم الليلة — مين يكون، وليش؟</span>
+              <small>— من لعبة «سوالف القهوة»</small>
+            </span>
+          </span>
+        </button>
+        <article class="bento-cell" data-reveal>
+          <h3>وضع عائلي</h3>
+          <p>فلتر يخلي كل المحتوى مناسب لكل الأعمار.</p>
+        </article>
+        <article class="bento-cell" data-reveal>
+          <h3>ابدأ ببلاش</h3>
+          <p>العبوا مجانًا، ورقّوا حسابكم متى ما حبيتوا.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ بعد السهرة ═══════════════════ -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>بعد السهرة</p>
+        <h2>الرسايل اللي توصلنا ثاني يوم</h2>
+        <p class="lead">ما نعرف طريقة أصدق من قروب الشلة نفسه.</p>
+      </header>
+      <div class="chat" id="chat" data-reveal>
+        <header class="chat-head">
+          <span class="chat-avatar-group">
+            <span class="dot dot-amber"></span><span class="dot dot-rose"></span><span class="dot dot-sage"></span>
+          </span>
+          <div>
+            <strong>شلة يوم الخميس</strong>
+            <small>٦ أعضاء · متصلين الآن</small>
+          </div>
+        </header>
+        <div class="chat-body">
+          <div class="msg" data-chat>
+            <span class="msg-avatar" style="--tint: var(--amber)">س</span>
+            <div class="msg-bubble"><strong>سعود</strong><p>يا جماعة لعبة «الدخيل» أمس فضحتنا 😂</p><time>١١:٤٢ م</time></div>
+          </div>
+          <div class="msg" data-chat>
+            <span class="msg-avatar" style="--tint: var(--rose)">ن</span>
+            <div class="msg-bubble"><strong>نوف</strong><p>ما زلت أضحك على عبدالله وهو يدافع عن نفسه 😭</p><time>١١:٤٣ م</time></div>
+          </div>
+          <div class="msg" data-chat>
+            <span class="msg-avatar" style="--tint: var(--sage)">ع</span>
+            <div class="msg-bubble"><strong>عبدالله</strong><p>المهم… نعيدها الخميس الجاي؟ 👀</p><time>١١:٤٣ م</time></div>
+          </div>
+          <div class="msg" data-chat>
+            <span class="msg-avatar" style="--tint: var(--night)">ر</span>
+            <div class="msg-bubble"><strong>ريم</strong><p>أنا ورا — بس هالمرة أنا اللي أختار اللعبة من وِنس</p><time>١١:٤٤ م</time></div>
+          </div>
+          <div class="msg msg-typing" data-chat aria-hidden="true">
+            <span class="msg-avatar" style="--tint: var(--amber)">س</span>
+            <div class="msg-bubble typing"><span></span><span></span><span></span></div>
+          </div>
+          <div class="msg" data-chat>
+            <span class="msg-avatar" style="--tint: var(--amber)">س</span>
+            <div class="msg-bubble"><strong>سعود</strong><p>تم ✅ الخميس ونسة ثانية 🔥</p><time>١١:٤٤ م</time></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ الأسئلة ═══════════════════ -->
+  <section class="section section-sage" id="faq">
+    <div class="container container-narrow">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><svg class="ic"><use href="#i-spark"/></svg>الأسئلة</p>
+        <h2>اللي يدور في بالك</h2>
+      </header>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            هل أحتاج أحمّل تطبيق؟
+            <span class="faq-x" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div><p>لا. وِنس يفتح من متصفح الجوال أو الكمبيوتر مباشرة — رابط واحد وتبدأون. لا متجر تطبيقات، ولا تحديثات، ولا مساحة تخزين.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            كم شخص يقدر يلعب معنا؟
+            <span class="faq-x" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div><p>من شخصين لعشرين شخص، حسب اللعبة. كل لعبة توضح لكم العدد المناسب قبل ما تبدأون، ونرشح لكم الأنسب حسب عددكم.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            هل الألعاب مناسبة للعيلة؟
+            <span class="faq-x" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div><p>نعم — فعّلوا «الوضع العائلي» ويظهر لكم محتوى مناسب لكل الأعمار فقط. قسم قعدة العيلة كامل مصمم أصلًا على هذا الأساس.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            وش أحتاج عشان أبدأ؟
+            <span class="faq-x" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div><p>جوال واحد وإنترنت عادي — هذا كل شي. أغلب الألعاب تنلعب من شاشة وحدة تدور على المجموعة، وبعضها يدعم انضمام كل شخص من جواله.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            هل في ألعاب خاصة برمضان؟
+            <span class="faq-x" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><div><p>قسم «ليالي رمضان» كامل: فوازير، مسابقات بعد التراويح، وتحديات سحور — ويتجدد كل سنة قبل الشهر بأسبوعين.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ التذييل ═══════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-cta" data-reveal>
+        <h2>
+          الونسة تبدأ من هنا
+          <svg class="squiggle" viewBox="0 0 220 26" aria-hidden="true" preserveAspectRatio="none">
+            <path d="M6 16 C13 15 33 7 48 8 C63 9 79 20 96 20 C113 20 130 9 150 8 C170 7 203 13 214 14" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </h2>
+        <p>أول لعبة على حسابنا. جرّبوها الليلة وشوفوا الفرق بنفسكم.</p>
+        <a class="btn btn-primary btn-lg" href="#games">
+          جرّب أول لعبة
+          <svg class="ic"><use href="#i-play"/></svg>
+        </a>
+      </div>
+
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#top" class="brand" aria-label="وِنس - الصفحة الرئيسية">
-            <img src="assets/icons/logo.svg" alt="" width="40" height="40">
-            <span>وِنس</span>
-          </a>
-          <p>منصة عربية تتيح لك الوصول إلى أفضل الألعاب الرقمية الأصلية بأسعار مناسبة وتجربة شراء موثوقة.</p>
-          <div class="social-icons">
-            <a href="#" aria-label="تابعنا على تويتر"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.5-1.3 1.8-2.3-.8.5-1.6.8-2.6 1a4 4 0 00-6.9 3.7A11.5 11.5 0 013 4.9a4 4 0 001.3 5.4c-.6 0-1.2-.2-1.7-.5v.1a4 4 0 003.3 4 4 4 0 01-1.8.1 4 4 0 003.8 2.8A8.1 8.1 0 012 18.4a11.5 11.5 0 006.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg></a>
-            <a href="#" aria-label="تابعنا على انستغرام"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-            <a href="#" aria-label="تابعنا على ديسكورد"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6.5c-1.4-.7-2.9-1.1-4.4-1.4l-.2.4c1.3.3 2.6.8 3.8 1.5-1.9-.9-4-1.4-6.2-1.4s-4.3.5-6.2 1.4c1.2-.7 2.5-1.2 3.8-1.5l-.2-.4C9 5.4 7.4 5.8 6 6.5 3.8 9.8 3.1 13 3.4 16.2a13 13 0 004 2l.8-1.2c-.7-.3-1.4-.6-2-1 .2-.1.3-.2.5-.3 3.7 1.7 7.7 1.7 11.4 0l.5.3c-.6.4-1.3.7-2 1l.8 1.2c1.5-.5 2.9-1.2 4-2 .4-3.7-.6-6.9-2.4-9.7zM9.5 14.3c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg></a>
-          </div>
+          <img src="assets/logo-dark.svg" alt="وِنس" width="132" height="46">
+          <p>منصة سعودية للألعاب الجماعية — نرتّب لكم الضحكة، وأنتم عليكم القهوة.</p>
         </div>
-
-        <div>
-          <h3 class="footer-heading">روابط سريعة</h3>
-          <nav class="footer-links" aria-label="روابط الفوتر">
-            <a href="#hero">الرئيسية</a>
-            <a href="#games">الألعاب</a>
-            <a href="#features">المميزات</a>
-            <a href="#faq">الأسئلة الشائعة</a>
-          </nav>
-        </div>
-
-        <div>
-          <h3 class="footer-heading">الشركة</h3>
-          <nav class="footer-links" aria-label="روابط الشركة">
-            <a href="#">من نحن</a>
-            <a href="#">سياسة الخصوصية</a>
-            <a href="#">الشروط والأحكام</a>
-            <a href="#contact">تواصل معنا</a>
-          </nav>
-        </div>
-
-        <div>
-          <h3 class="footer-heading">اشترك في نشرتنا</h3>
-          <p style="color: var(--color-text-muted); font-size: var(--fs-sm);">آخر العروض والألعاب الجديدة تصل بريدك أولًا بأول.</p>
-          <form class="newsletter" onsubmit="return false;">
-            <label class="sr-only" for="newsletter-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">البريد الإلكتروني</label>
-            <input type="email" id="newsletter-email" placeholder="بريدك الإلكتروني" required>
-            <button type="submit" class="btn btn--primary btn--sm">اشتراك</button>
-          </form>
+        <nav class="footer-col" aria-label="روابط سريعة">
+          <h3>روابط سريعة</h3>
+          <ul>
+            <li><a href="#occasions">القعدات</a></li>
+            <li><a href="#games">الألعاب</a></li>
+            <li><a href="#how">كيف تبدأ</a></li>
+            <li><a href="#faq">الأسئلة الشائعة</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="الألعاب التجريبية">
+          <h3>الألعاب التجريبية</h3>
+          <ul>
+            <li><a href="games/dakheel.html">الدخيل</a></li>
+            <li><a href="games/khams.html">خمس ثواني</a></li>
+            <li><a href="games/qahwa.html">سوالف القهوة</a></li>
+            <li><a href="#occasions">كل القعدات</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h3>تابعونا</h3>
+          <ul class="socials">
+            <li><a href="#" aria-label="حسابنا في إكس"><svg class="ic"><use href="#i-x"/></svg></a></li>
+            <li><a href="#" aria-label="حسابنا في انستقرام"><svg class="ic"><use href="#i-instagram"/></svg></a></li>
+            <li><a href="#" aria-label="حسابنا في تيك توك"><svg class="ic"><use href="#i-tiktok"/></svg></a></li>
+            <li><a href="#" aria-label="حسابنا في سناب شات"><svg class="ic"><use href="#i-snap"/></svg></a></li>
+          </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© <span class="js-year">2026</span> وِنس. جميع الحقوق محفوظة.</p>
-        <div class="footer-bottom__links">
-          <a href="#">سياسة الخصوصية</a>
-          <a href="#">الشروط والأحكام</a>
-        </div>
+        <span>© ٢٠٢٦ وِنس — صُنع بونس في السعودية</span>
+        <span><a href="#">سياسة الخصوصية</a> · <a href="#">الشروط والأحكام</a></span>
       </div>
     </div>
   </footer>
 
-  <!-- ============================ Modal (prototype) ============================ -->
-  <div class="modal js-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal__overlay"></div>
-    <div class="modal__dialog">
-      <button class="modal__close" type="button" aria-label="إغلاق">✕</button>
-      <span class="modal__icon js-modal-icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      <h3 id="modal-title" class="js-modal-title">تمت العملية بنجاح</h3>
-      <p class="js-modal-message">هذا نموذج أولي للتصميم فقط.</p>
-      <button class="btn btn--primary btn--block modal-confirm-close" type="button">حسنًا، فهمت</button>
-    </div>
-  </div>
+</main>
 
-  <!-- ============================ Toast ============================ -->
-  <div class="toast js-toast" role="status" aria-live="polite">
-    <span class="toast__icon" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </span>
-    <p class="js-toast-message">تم تنفيذ العملية بنجاح.</p>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/app.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

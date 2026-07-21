@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وِنس — الهوية البصرية: الشعار</title>
+<style>
+  /* ---------- الخط: Cairo مستضاف محليًا (متغيّر الوزن) ---------- */
+  @font-face {
+    font-family: 'Cairo';
+    src: url('assets/fonts/cairo-var.woff2') format('woff2');
+    font-weight: 200 900;
+    font-display: swap;
+  }
+
+  /* ---------- رموز التصميم — مفهوم «ليل وقهوة» ---------- */
+  :root {
+    --cream: #FAF6F0;
+    --cream-deep: #F1EAE0;
+    --ink: #2B2140;
+    --ink-soft: #5A506E;
+    --amber: #E8833A;
+    --amber-soft: #F6DCC6;
+    --rose: #E85D75;
+    --sage: #7FA98F;
+    --radius: 22px;
+    --shadow: 0 18px 44px -18px rgba(43, 33, 64, .18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.9;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- الترويسة ---------- */
+  header {
+    padding: 54px 0 34px;
+    display: flex; align-items: center; gap: 18px;
+    border-bottom: 1px solid var(--cream-deep);
+  }
+  header img { width: 52px; height: 52px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 700; letter-spacing: .06em;
+    color: var(--amber); margin-bottom: 2px;
+  }
+  header h1 { font-size: 26px; font-weight: 800; }
+
+  section { padding: 62px 0; }
+  section + section { border-top: 1px solid var(--cream-deep); }
+
+  h2 { font-size: 21px; font-weight: 800; margin-bottom: 6px; }
+  .lead { color: var(--ink-soft); max-width: 58ch; margin-bottom: 34px; }
+
+  /* ---------- ١ · الفكرة ---------- */
+  .story { display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: center; }
+  .story-mark {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    display: grid; place-items: center; aspect-ratio: 1; padding: 44px;
+  }
+  .story-mark img { width: 100%; }
+  .idea { display: flex; gap: 16px; align-items: flex-start; }
+  .idea + .idea { margin-top: 26px; }
+  .idea-dot { flex: 0 0 14px; height: 14px; border-radius: 50%; margin-top: 12px; }
+  .idea h3 { font-size: 16.5px; font-weight: 800; }
+  .idea p { color: var(--ink-soft); font-size: 15px; max-width: 52ch; }
+
+  /* ---------- ٢ · الشعار الأساسي ---------- */
+  .hero-lockup {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    display: grid; place-items: center; padding: 96px 40px;
+  }
+  .hero-lockup img { width: min(460px, 82%); }
+
+  /* ---------- ٣ · النسخ ---------- */
+  .variants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .variant {
+    border-radius: var(--radius); display: grid; place-items: center;
+    padding: 52px 30px; min-height: 210px; position: relative;
+  }
+  .variant img { width: 100%; max-width: 230px; }
+  .variant.on-night { background: var(--ink); }
+  .variant.on-white { background: #fff; box-shadow: var(--shadow); }
+  .variant.on-amber { background: var(--amber-soft); }
+  .variant .tag {
+    position: absolute; bottom: 14px; inset-inline-start: 18px;
+    font-size: 12.5px; font-weight: 700; color: var(--ink-soft);
+  }
+  .variant.on-night .tag { color: rgba(250, 246, 240, .65); }
+  .variant.on-amber img { max-width: 96px; }
+
+  /* ---------- ٤ · اختبار الحجم ---------- */
+  .scale-row {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    display: flex; align-items: flex-end; gap: 58px; padding: 44px 48px; flex-wrap: wrap;
+  }
+  .scale-item { text-align: center; }
+  .scale-item .num { font-size: 12.5px; font-weight: 700; color: var(--ink-soft); margin-top: 12px; }
+
+  /* ---------- ٥ · قواعد الاستخدام ---------- */
+  .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .rule {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 26px 26px 22px;
+  }
+  .rule .ok   { color: var(--sage); font-weight: 800; font-size: 14px; }
+  .rule .no   { color: var(--rose); font-weight: 800; font-size: 14px; }
+  .rule h3 { font-size: 16px; font-weight: 800; margin: 2px 0 6px; }
+  .rule p  { font-size: 14px; color: var(--ink-soft); }
+
+  footer {
+    margin-top: 20px; padding: 40px 0 56px;
+    border-top: 1px solid var(--cream-deep);
+    color: var(--ink-soft); font-size: 14px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+
+  @media (max-width: 800px) {
+    .story { grid-template-columns: 1fr; gap: 34px; }
+    .story-mark { max-width: 300px; margin-inline: auto; }
+    .variants, .rules { grid-template-columns: 1fr; }
+    .scale-row { gap: 34px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="assets/logo-mark.svg" alt="شعار ونس">
+    <div>
+      <div class="eyebrow">وِنس · الهوية البصرية</div>
+      <h1>الشعار</h1>
+    </div>
+  </header>
+
+  <!-- ١ · الفكرة -->
+  <section>
+    <h2>الفكرة: حلقة الونسة</h2>
+    <p class="lead">الشعار مو رسمة، هو معنى الاسم نفسه. «وِنس» يعني الجَمعة، والجَمعة عند أهلها دايرة — مجلس يلتف فيه الناس حول بعض.</p>
+    <div class="story">
+      <div class="story-mark"><img src="assets/logo-mark.svg" alt="رمز حلقة الونسة"></div>
+      <div>
+        <div class="idea">
+          <span class="idea-dot" style="background: var(--ink)"></span>
+          <div>
+            <h3>الحلقة المرسومة باليد</h3>
+            <p>خط دائري غير مثالي، مرسوم بحرية — لأن القعدات الحلوة ما تنرسم بالمسطرة. يعطي الهوية دفء وقرب بدل البرود الهندسي.</p>
+          </div>
+        </div>
+        <div class="idea">
+          <span class="idea-dot" style="background: var(--amber)"></span>
+          <div>
+            <h3>ثلاثة جالسين… بألوان المناسبات</h3>
+            <p>نقاط جالسة داخل الحلقة وظهورها للجدار، مثل المجلس. العنبري للشلة، الوردي للثنائي، الأخضر للعائلة — ألوان المنصّة نفسها.</p>
+          </div>
+        </div>
+        <div class="idea">
+          <span class="idea-dot" style="background: var(--rose)"></span>
+          <div>
+            <h3>الفتحة = مكانك</h3>
+            <p>الدائرة ما تكتمل عمدًا. الفراغ في أسفلها هو مقعدك الفاضي — دعوة دائمة: تعال كمّل الحلقة.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ٢ · الشعار الأساسي -->
+  <section>
+    <h2>الشعار الأساسي</h2>
+    <p class="lead">الكلمة بخط Cairo Black محوّلة لمسارات (تشتغل بأي مكان بدون خطوط)، ونقطة النون بالعنبري — نفس نقاط الحلقة. هي الجسر اللي يربط الكلمة بالرمز: الشخص نفسه، هنا وهناك.</p>
+    <div class="hero-lockup">
+      <img src="assets/logo.svg" alt="شعار ونس الأساسي">
+    </div>
+  </section>
+
+  <!-- ٣ · النسخ -->
+  <section>
+    <h2>النسخ المعتمدة</h2>
+    <p class="lead">ثلاث نسخ تغطي كل الاستخدامات. لا توجد نسخة رابعة.</p>
+    <div class="variants">
+      <div class="variant on-night">
+        <img src="assets/logo-dark.svg" alt="الشعار على الخلفية الليلية">
+        <span class="tag">على «ليل» — التذييل والواجهات الداكنة</span>
+      </div>
+      <div class="variant on-white">
+        <img src="assets/logo-mono.svg" alt="الشعار أحادي اللون">
+        <span class="tag">أحادي — الطباعة والأختام</span>
+      </div>
+      <div class="variant on-amber">
+        <img src="assets/logo-mark.svg" alt="الرمز مستقلًا">
+        <span class="tag">الرمز — أيقونة التطبيق والحسابات</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ٤ · اختبار الحجم -->
+  <section>
+    <h2>يصغر ولا ينكسر</h2>
+    <p class="lead">الرمز مصمم ليظل مقروءًا حتى حجم الأيقونة المفضلة في المتصفح.</p>
+    <div class="scale-row">
+      <div class="scale-item"><img src="assets/logo-mark.svg" width="96" height="96" alt=""><div class="num">96px</div></div>
+      <div class="scale-item"><img src="assets/logo-mark.svg" width="48" height="48" alt=""><div class="num">48px</div></div>
+      <div class="scale-item"><img src="assets/logo-mark.svg" width="32" height="32" alt=""><div class="num">32px</div></div>
+      <div class="scale-item"><img src="assets/logo-mark.svg" width="24" height="24" alt=""><div class="num">24px</div></div>
+    </div>
+  </section>
+
+  <!-- ٥ · قواعد الاستخدام -->
+  <section>
+    <h2>قواعد بسيطة، صارمة</h2>
+    <div class="rules">
+      <div class="rule">
+        <span class="ok">التزم</span>
+        <h3>مساحة الأمان</h3>
+        <p>اترك حول الشعار فراغًا يساوي قطر النقطة العنبرية مضروبًا في اثنين، من كل جهة.</p>
+      </div>
+      <div class="rule">
+        <span class="ok">التزم</span>
+        <h3>الحد الأدنى</h3>
+        <p>لا يُستخدم الشعار الكامل بعرض أقل من 96px. تحت ذلك، استخدم الرمز وحده.</p>
+      </div>
+      <div class="rule">
+        <span class="no">ممنوع</span>
+        <h3>العبث بالحلقة</h3>
+        <p>لا إغلاق للفتحة، لا تغيير لألوان النقاط، لا تمديد، لا ظلال، لا دوران. الحلقة كما هي.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>وِنس © ٢٠٢٦ — مستند داخلي</span>
+    <span>مفهوم «ليل وقهوة» · الإصدار ١٫٠</span>
+  </footer>
+
+</div>
+</body>
+</html>
